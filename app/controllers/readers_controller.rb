@@ -14,10 +14,6 @@ class ReadersController < ApplicationController
     end
   end
 
-  def dummy
-    render nothing: true
-  end
-
   private
 
   def reader_params

@@ -3,5 +3,5 @@ Libapp::Application.routes.draw do
 
   resources :readers
 
-  root to: "readers#dummy"
+  root to: "home#index"
 end
