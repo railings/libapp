@@ -5,9 +5,13 @@ class ReadersController < ApplicationController
   end
 
   def create
-    reader = Reader.new(reader_params)
-    reader.save
-    redirect_to root_url, notice: "Registered successfully."
+    @reader = Reader.new(reader_params)
+    if @reader.save
+      redirect_to root_url, notice: "Registered successfully."
+    else
+      flash.now[:error] = "Something went wrong ."
+      render :new
+    end
   end
 
   def dummy
@@ -17,7 +21,7 @@ class ReadersController < ApplicationController
   private
 
   def reader_params
-    params.require(:reader).permit(:email, :password, :password_protection)
+    params.require(:reader).permit(:email, :password, :password_confirmation)
   end
 
 end
