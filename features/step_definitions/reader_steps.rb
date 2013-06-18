@@ -10,7 +10,7 @@ When(/^I fill the register form with valid data$/) do
 end
 
 Then(/^I should be registered in the application$/) do
-  pending
+  expect(Reader.find_by_email("reader01@mail.com")).not_to be_nil
 end
 
 When(/^I should be logged in$/) do
