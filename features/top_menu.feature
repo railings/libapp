@@ -7,3 +7,8 @@ Feature:
     Given I am a guest
     When I go to the home page
     Then I should see guest menu
+
+  Scenario: Reader
+    Given I am "john@reader.com" reader
+    When I go to the home page
+    Then I should see "john@reader.com" reader menu
