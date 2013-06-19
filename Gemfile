@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'sqlite3'
@@ -23,3 +23,4 @@ end
 gem 'jquery-rails'
 gem 'strong_parameters'
 gem 'email_validator'
+gem 'active_attr'
