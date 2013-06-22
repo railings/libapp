@@ -39,8 +39,5 @@ describe Reader do
       reader = Reader.new(@params)
       expect(reader.valid?).to be_false
     end
-
-    it { should validate_presence_of :password }
-    it { should validate_confirmation_of :password }
   end
 end
