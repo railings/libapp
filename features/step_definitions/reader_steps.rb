@@ -14,7 +14,7 @@ Then(/^I should be registered in the application$/) do
 end
 
 When(/^I should be logged in$/) do
-  expect(page).to have_content("Welcome reader01@mail.com")
+  expect(page).to have_content("Welcome, reader01@mail.com")
 end
 
 When(/^I fill the register form with invalid data$/) do
@@ -43,15 +43,17 @@ Then(/^I should see guest menu$/) do
 end
 
 Given(/^I am "(.*?)" reader$/) do |email|
-  pending # express the regexp above with the code you wish you had
+  step "reader with email \"#{email}\" exists"
+  step "I fill the login form with valid data for \"#{email}\" reader"
 end
 
 Then(/^I should see "(.*?)" reader menu$/) do |email|
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("Welcome, #{email}")
 end
 
 And(/^reader with email "(.*?)" exists$/) do |email|
-  Reader.create({email: email, password: "pass", password_confirmation: "pass"})
+  Reader.create({email: email, password: "password",
+                 password_confirmation: "password"})
 end
 
 When(/^I fill the login form with valid data for "(.*?)" reader$/) do |email|
@@ -62,5 +64,5 @@ When(/^I fill the login form with valid data for "(.*?)" reader$/) do |email|
 end
 
 Then(/^I should be logged in as "(.*?)" reader$/) do |email|
-  expect(page).to have_content("Welcome #{email}")
+  expect(page).to have_content("Welcome, #{email}")
 end

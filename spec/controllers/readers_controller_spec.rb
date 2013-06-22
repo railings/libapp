@@ -56,6 +56,10 @@ describe ReadersController do
       it "assigns a success flash message" do
         expect(flash[:notice]).not_to be_nil
       end
+
+      it "logs in reader" do
+        expect(session[:reader_id]).to eq(reader.id)
+      end
     end
 
     context "when save message returns false" do
