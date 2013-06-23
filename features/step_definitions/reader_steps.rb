@@ -42,7 +42,7 @@ Then(/^I should see guest menu$/) do
   expect(page).to have_link('Register', href: register_path)
 end
 
-Given(/^I am "(.*?)" reader$/) do |email|
+Given(/^I am a "(.*?)" reader$/) do |email|
   step "reader with email \"#{email}\" exists"
   step "I fill the login form with valid data for \"#{email}\" reader"
 end
@@ -57,7 +57,7 @@ And(/^reader with email "(.*?)" exists$/) do |email|
 end
 
 When(/^I fill the login form with valid data for "(.*?)" reader$/) do |email|
-  visit("/login")
+  visit('/login')
   fill_in "login_email", with: email
   fill_in "login_password", with: "password"
   click_button "Login"
@@ -65,4 +65,13 @@ end
 
 Then(/^I should be logged in as "(.*?)" reader$/) do |email|
   expect(page).to have_content("Welcome, #{email}")
+end
+
+When(/^I go to logout page$/) do
+  visit('/logout')
+end
+
+Then(/^I should be logged out$/) do
+  expect(page).not_to have_content('Welcome')
+  expect(page).to have_content('Register')
 end
